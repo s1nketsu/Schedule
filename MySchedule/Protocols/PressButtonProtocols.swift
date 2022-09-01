@@ -9,5 +9,8 @@ import Foundation
 
 protocol PressButtonTaskButtonProtocol: AnyObject {
     func readyButtonTapped(indexPath: IndexPath)
-    
+}
+
+protocol SwitchRepeatProtocol: AnyObject {
+    func switchRepeat(value: Bool)
 }

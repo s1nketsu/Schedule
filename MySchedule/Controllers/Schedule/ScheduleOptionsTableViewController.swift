@@ -7,10 +7,10 @@
 
 import UIKit
 
-class OptionsScheduleTableViewController: UITableViewController {
+class ScheduleOptionsTableViewController: UITableViewController {
     
-    let idOptionsScheduleCell = "idOptionsScheduleCell"
-    let idOptionsScheduleCellHeader = "idOptionsScheduleCellHeader"
+    private let idOptionsScheduleCell = "idOptionsScheduleCell"
+    private let idOptionsScheduleCellHeader = "idOptionsScheduleCellHeader"
     
     let headerNameArray = ["DATE AND TIME","SUBJECT","TEACHER","COLOR","PERIOD"]
     
@@ -20,12 +20,17 @@ class OptionsScheduleTableViewController: UITableViewController {
                          [""],
                          ["Repeat every 7 days"]]
     
+    private var scheduleModel = ScheduleModel()
+    
+    var hexColorCell = "5D11F7"
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
         view.backgroundColor = .white
-        title = "Option Schedule"
+        title = "Options Schedule"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
         
         tableView.delegate = self
         tableView.dataSource = self
@@ -35,6 +40,15 @@ class OptionsScheduleTableViewController: UITableViewController {
         tableView.bounces = false
         tableView.register(HeaderOptionsTableViewCell.self, forHeaderFooterViewReuseIdentifier: idOptionsScheduleCellHeader)
 
+    }
+    
+    @objc private func saveButtonTapped() {
+        scheduleModel.scheduleColor = hexColorCell
+        RealmManager.shared.saveScheduleModel(model: scheduleModel)
+        scheduleModel = ScheduleModel()
+        alertOk(title: "Lesson added")
+        hexColorCell = "5D11F7"
+        tableView.reloadData()
     }
     
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -52,7 +66,8 @@ class OptionsScheduleTableViewController: UITableViewController {
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idOptionsScheduleCell, for: indexPath) as! OptionsTableViewCell
-        cell.cellScheduleConfigure(nameArray: cellNameArray, indexPath: indexPath)
+        cell.cellScheduleConfigure(nameArray: cellNameArray, indexPath: indexPath, hexColor: hexColorCell)
+        cell.switchRepeatDelegate = self
         return cell
     }
     
@@ -74,20 +89,33 @@ class OptionsScheduleTableViewController: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! OptionsTableViewCell
         
         switch indexPath {
-        case [0,0]: alertDate(label: cell.nameCellLabel) { (numberWeekday, date) in
-            print(numberWeekday,date)
+        case [0,0]:
+            alertDate(label: cell.nameCellLabel) { (numberWeekday, date) in
+                self.scheduleModel.scheduleDate = date
+                self.scheduleModel.scheduleWeekday = numberWeekday
         }
-        case [0,1]: alertTime(label: cell.nameCellLabel) { date in
-            print(date)
+        case [0,1]:
+            alertTime(label: cell.nameCellLabel) { (time) in
+                self.scheduleModel.scheduleTime = time
+            }
+        case [1,0]:
+            alertForCellName(label: cell.nameCellLabel, name: "Lesson", placeholder: "Enter lesson name") { text in
+                self.scheduleModel.scheduleName = text
+            }
+        case [1,1]:
+            alertForCellName(label: cell.nameCellLabel, name: "Type lesson", placeholder: "Enter lesson type") { text in
+            self.scheduleModel.scheduleType = text
+            }
+        case [1,2]:
+            alertForCellName(label: cell.nameCellLabel, name: "Building number", placeholder: "Ender number of building") { text in
+                self.scheduleModel.scheduleBuilding = text
         }
-            
-        case [1,0]: alertForCellName(label: cell.nameCellLabel, name: "Lesson", placeholder: "Enter lesson name")
-        case [1,1]: alertForCellName(label: cell.nameCellLabel, name: "Type lesson", placeholder: "Enter lesson type")
-        case [1,2]: alertForCellName(label: cell.nameCellLabel, name: "Building number", placeholder: "Ender number of building")
-        case [1,3]: alertForCellName(label: cell.nameCellLabel, name: "Audience", placeholder: "Enter audience")
-            
+        case [1,3]:
+            alertForCellName(label: cell.nameCellLabel, name: "Audience", placeholder: "Enter audience") { text in
+                self.scheduleModel.scheduleAudience = text
+        }
         case [2,0]: pushControllers(vc: TeachersViewController())
-        case [3,0]: pushControllers(vc: ScheduleColorViewController())
+        case [3,0]: pushControllers(vc: ScheduleColorsViewController())
 
         default: print("Tap OptionTableView")
         }
@@ -97,5 +125,12 @@ class OptionsScheduleTableViewController: UITableViewController {
         let viewController = vc
         navigationController?.navigationBar.topItem?.title = "Options"
         navigationController?.pushViewController(viewController, animated: true)
+    }
+}
+
+
+extension ScheduleOptionsTableViewController: SwitchRepeatProtocol {
+    func switchRepeat(value: Bool) {
+        scheduleModel.scheduleRepeat = value
     }
 }

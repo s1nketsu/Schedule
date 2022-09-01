@@ -10,7 +10,7 @@ import FSCalendar
 
 class ScheduleViewController: UIViewController {
     
-    var calendarHeightConstraint: NSLayoutConstraint!
+    private var calendarHeightConstraint: NSLayoutConstraint!
     
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
@@ -18,7 +18,7 @@ class ScheduleViewController: UIViewController {
         return calendar
     }()
 
-    let showHideButton: UIButton = {
+    private let showHideButton: UIButton = {
         let button = UIButton()
         button.setTitle("Open calendar", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
@@ -27,19 +27,20 @@ class ScheduleViewController: UIViewController {
         return button
     }()
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.bounces = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
-    let idScheduleCell = "idScheduleCell"
+    private let idScheduleCell = "idScheduleCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         view.backgroundColor = .white
+        
         title = "Schedule"
         
         calendar.delegate = self
@@ -54,15 +55,17 @@ class ScheduleViewController: UIViewController {
         swipeAction()
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
+        
+        navigationController?.tabBarController?.tabBar.scrollEdgeAppearance = navigationController?.tabBarController?.tabBar.standardAppearance
     }
     
-    @objc func AddButtonTapped() {
-        let scheduleOption = OptionsScheduleTableViewController()
+    @objc private func addButtonTapped() {
+        let scheduleOption = ScheduleOptionsTableViewController()
         navigationController?.pushViewController(scheduleOption, animated: true)
     }
     
-    @objc func showHideButtonTapped() {
+    @objc private func showHideButtonTapped() {
         if calendar.scope == .week {
             calendar.setScope(.month, animated: true)
             showHideButton.setTitle("Close calendar", for: .normal)
@@ -72,7 +75,7 @@ class ScheduleViewController: UIViewController {
         }
     }
     
-    func swipeAction() {
+    private func swipeAction() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         swipeUp.direction = .up
         calendar.addGestureRecognizer(swipeUp)
@@ -82,7 +85,7 @@ class ScheduleViewController: UIViewController {
         calendar.addGestureRecognizer(swipeDown)
     }
     
-    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+    @objc private func handleSwipe(gesture: UISwipeGestureRecognizer) {
        
         switch gesture.direction {
         case .up: showHideButtonTapped()

@@ -1,5 +1,5 @@
 //
-//  AlertTime.swift
+//  AlertDate.swift
 //  MySchedule
 //
 //  Created by Полищук Александр on 30.08.2022.
@@ -10,27 +10,30 @@ import UIKit
 
 extension UIViewController {
     
-    func alertTime(label: UILabel, completionHandler: @escaping (NSDate) -> Void) {
+    func alertDate(label: UILabel, completionHandler: @escaping (Int, Date) -> Void) {
         
         let alert = UIAlertController(title: "", message: nil, preferredStyle: .actionSheet)
         
         let datePicker = UIDatePicker()
-        datePicker.datePickerMode = .time
+        datePicker.datePickerMode = .date
         datePicker.preferredDatePickerStyle = .wheels
-        datePicker.locale = NSLocale(localeIdentifier: "RU_ru") as Locale
         
         alert.view.addSubview(datePicker)
         
         let ok = UIAlertAction(title: "OK", style: .default) { (action) in
             
-           let dateFormatter = DateFormatter()
-            dateFormatter.dateFormat = "HH:mm"
-            let timeString = dateFormatter.string(from: datePicker.date)
-            let timeSchedule = datePicker.date as NSDate
-            completionHandler(timeSchedule)
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd.MM.yyyy"
+            let dateString = dateFormatter.string(from: datePicker.date)
             
-            label.text = timeString
+            let calendar = Calendar.current
+            let component = calendar.dateComponents([.weekday], from: datePicker.date)
+            guard let weekday = component.weekday else { return }
+            let numberWeekday = weekday
+            let date = datePicker.date as Date
+            completionHandler(numberWeekday, date)
             
+            label.text = dateString
         }
         
         let cancel = UIAlertAction(title: "Cancel", style: .default, handler: nil)
@@ -46,7 +49,5 @@ extension UIViewController {
         datePicker.topAnchor.constraint(equalTo: alert.view.topAnchor, constant: 20).isActive = true
         
         present(alert, animated: true, completion: nil)
-        
     }
-    
 }

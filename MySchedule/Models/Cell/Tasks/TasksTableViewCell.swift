@@ -23,7 +23,6 @@ class TasksTableViewCell: UITableViewCell {
     weak var cellTaskDelegate: PressButtonTaskButtonProtocol?
     var index: IndexPath?
     
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         

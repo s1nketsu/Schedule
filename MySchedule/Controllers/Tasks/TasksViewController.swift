@@ -10,7 +10,7 @@ import FSCalendar
 
 class TasksViewController: UIViewController {
     
-    var calendarHeightConstraint: NSLayoutConstraint!
+    private var calendarHeightConstraint: NSLayoutConstraint!
     
     private var calendar: FSCalendar = {
         let calendar = FSCalendar()
@@ -18,7 +18,7 @@ class TasksViewController: UIViewController {
         return calendar
     }()
 
-    let showHideButton: UIButton = {
+    private let showHideButton: UIButton = {
         let button = UIButton()
         button.setTitle("Open calendar", for: .normal)
         button.setTitleColor(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1), for: .normal)
@@ -27,14 +27,14 @@ class TasksViewController: UIViewController {
         return button
     }()
     
-    let tableView: UITableView = {
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.bounces = false
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
     
-    let idTasksCell = "idTasksCell"
+    private let idTasksCell = "idTasksCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -54,15 +54,15 @@ class TasksViewController: UIViewController {
         swipeAction()
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
     
-    @objc func AddButtonTapped() {
-        let taskOption = TaskOptionTableView()
+    @objc private func addButtonTapped() {
+        let taskOption = TasksOptionTableView()
         navigationController?.pushViewController(taskOption, animated: true)
     }
     
-    @objc func showHideButtonTapped() {
+    @objc private func showHideButtonTapped() {
         if calendar.scope == .week {
             calendar.setScope(.month, animated: true)
             showHideButton.setTitle("Close calendar", for: .normal)
@@ -72,7 +72,7 @@ class TasksViewController: UIViewController {
         }
     }
     
-    func swipeAction() {
+    private func swipeAction() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         swipeUp.direction = .up
         calendar.addGestureRecognizer(swipeUp)
@@ -82,7 +82,7 @@ class TasksViewController: UIViewController {
         calendar.addGestureRecognizer(swipeDown)
     }
     
-    @objc func handleSwipe(gesture: UISwipeGestureRecognizer) {
+    @objc private func handleSwipe(gesture: UISwipeGestureRecognizer) {
        
         switch gesture.direction {
         case .up: showHideButtonTapped()

@@ -9,17 +9,17 @@ import UIKit
 
 extension UIViewController {
     
-    func alertFriendOrTeacher(label: UILabel, completionHandle: @escaping (String) -> Void) {
+    func alertFriendOrTeacher(label: UILabel, completionHandler: @escaping (String) -> Void) {
         let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         let friend = UIAlertAction(title: "Friend", style: .default) { _ in
             label.text = "Friend"
             let typeContact = "Friend"
-            completionHandle(typeContact)
+            completionHandler(typeContact)
         }
         let teacher = UIAlertAction(title: "Teacher", style: .default) { _ in
             label.text = "Teacher"
             let typeContact = "Teacher"
-            completionHandle(typeContact)
+            completionHandler(typeContact)
         }
         let cancel = UIAlertAction(title: "Cancel", style: .cancel)
         
@@ -29,7 +29,4 @@ extension UIViewController {
         
         present(alertController, animated: true)
     }
-    
-    
 }
-

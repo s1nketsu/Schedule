@@ -9,10 +9,15 @@ import UIKit
 
 class ContactsTableViewController: UITableViewController {
     
-    let idContactsTaskCell = "idContactsTaskCell"
+    private let searchController = UISearchController()
+    
+    private let idContactsTaskCell = "idContactsTaskCell"
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        searchController.searchBar.placeholder = "Search"
+        navigationItem.searchController = searchController
        
         view.backgroundColor = .white
         title = "Contacts"
@@ -23,13 +28,12 @@ class ContactsTableViewController: UITableViewController {
         tableView.separatorStyle = .singleLine
         tableView.separatorStyle = .none
         tableView.register(ContactsTableViewCell.self, forCellReuseIdentifier: idContactsTaskCell)
-        tableView.bounces = false
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(AddButtonTapped))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
     }
     
-    @objc func AddButtonTapped() {
-        let contactOption = ContactOptionTableViewController()
+    @objc private func addButtonTapped() {
+        let contactOption = ContactsOptionTableViewController()
         navigationController?.pushViewController(contactOption, animated: true)
     }
     
@@ -48,7 +52,6 @@ class ContactsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
     }
-
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        print("Tapped")

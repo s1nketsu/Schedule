@@ -6,12 +6,13 @@
 //
 
 import UIKit
+import RealmSwift
 
 class MainTapBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         setupTapBar()
     }
     
@@ -20,7 +21,7 @@ class MainTapBarController: UITabBarController {
         let scheduleViewController = createNavController(vc: ScheduleViewController(), itemName: "Schedule", ItemImage: "calendar.badge.clock")
         let tasksViewController = createNavController(vc: TasksViewController(), itemName: "Tasks", ItemImage: "text.badge.checkmark")
         let contactsViewController = createNavController(vc: ContactsTableViewController(), itemName: "Contacts", ItemImage: "rectangle.stack.person.crop")
-        
+    
         viewControllers = [scheduleViewController, tasksViewController, contactsViewController]
         
     }
@@ -31,9 +32,9 @@ class MainTapBarController: UITabBarController {
         
         let navController = UINavigationController(rootViewController: vc)
         navController.tabBarItem = item
+        navController.navigationBar.scrollEdgeAppearance = navController.navigationBar.standardAppearance
         
         return navController
     }
-
 }
 

@@ -29,10 +29,11 @@ class OptionsTableViewCell: UITableViewCell {
         let repeatSwitch = UISwitch()
         repeatSwitch.isOn = true
         repeatSwitch.isHidden = true
-        repeatSwitch.onTintColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
         repeatSwitch.translatesAutoresizingMaskIntoConstraints = false
         return repeatSwitch
     }()
+    
+    weak var switchRepeatDelegate: SwitchRepeatProtocol?
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -48,24 +49,20 @@ class OptionsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func cellScheduleConfigure(nameArray: [[String]], indexPath: IndexPath) {
+    func cellScheduleConfigure(nameArray: [[String]], indexPath: IndexPath, hexColor: String) {
         nameCellLabel.text = nameArray[indexPath.section][indexPath.row]
         
-        if indexPath == [3,0] {
-            backgroundViewCell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        }
+        let color = UIColor().colorFromHex(hexColor)
+        backgroundViewCell.backgroundColor = (indexPath.section == 3 ? color : .white)
         
-        if indexPath == [4,0] {
-            repeatSwitch.isHidden = false
-        }
+        repeatSwitch.isHidden = (indexPath.section == 4 ? false : true)
+        repeatSwitch.onTintColor = color
+
     }
     
     func cellTaskConfigure(nameArray: [String], indexPath: IndexPath) {
         nameCellLabel.text = nameArray[indexPath.section]
-        
-        if indexPath == [3,0] {
-            backgroundViewCell.backgroundColor = #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1)
-        }
+        backgroundViewCell.backgroundColor = (indexPath.section == 3 ? #colorLiteral(red: 0.1411764771, green: 0.3960784376, blue: 0.5647059083, alpha: 1) : .white)
     }
     
     func cellContactConfigure(nameArray: [String], indexPath: IndexPath) {
@@ -75,11 +72,7 @@ class OptionsTableViewCell: UITableViewCell {
     }
     
     @objc func switchChange(paramTarget: UISwitch) {
-        if paramTarget.isOn {
-            print("On")
-        } else {
-            print("Off")
-        }
+        switchRepeatDelegate?.switchRepeat(value: paramTarget.isOn)
     }
     
     func setConstraints() {

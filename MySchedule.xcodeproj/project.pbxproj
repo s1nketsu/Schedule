@@ -8,27 +8,33 @@
 
 /* Begin PBXBuildFile section */
 		57EBDE6E63F1F6D7D7D58EAA /* Pods_MySchedule.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5FCB1F035E2B4EA9D9F893AD /* Pods_MySchedule.framework */; };
+		A306591728C000EC00542C75 /* AlertOk.swift in Sources */ = {isa = PBXBuildFile; fileRef = A306591628C000EC00542C75 /* AlertOk.swift */; };
+		A311950228BFB6FC00DCBCB7 /* AlertPhotoCamera.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311950128BFB6FC00DCBCB7 /* AlertPhotoCamera.swift */; };
+		A311950528BFBEED00DCBCB7 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = A311950428BFBEED00DCBCB7 /* Realm */; };
+		A311950728BFBEED00DCBCB7 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = A311950628BFBEED00DCBCB7 /* RealmSwift */; };
+		A311950A28BFC06500DCBCB7 /* ScheduleModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A311950928BFC06500DCBCB7 /* ScheduleModel.swift */; };
 		A321F3E728BD08FA0089B1B4 /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F3E628BD08FA0089B1B4 /* ScheduleTableViewCell.swift */; };
 		A321F3EB28BD0F890089B1B4 /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F3EA28BD0F890089B1B4 /* UIStackView.swift */; };
 		A321F3ED28BD14560089B1B4 /* UILabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F3EC28BD14560089B1B4 /* UILabel.swift */; };
 		A321F3EF28BD16920089B1B4 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = A321F3EE28BD16920089B1B4 /* UIFont.swift */; };
+		A33C302F28BFC32E005E46C5 /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A33C302E28BFC32E005E46C5 /* RealmManager.swift */; };
 		A3577CD628BE966C00122272 /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3577CD528BE966C00122272 /* ContactsTableViewController.swift */; };
 		A3577CD828BE97B400122272 /* ContactsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3577CD728BE97B400122272 /* ContactsTableViewCell.swift */; };
-		A3577CDA28BEA93900122272 /* ContactOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3577CD928BEA93900122272 /* ContactOptionTableViewController.swift */; };
+		A3577CDA28BEA93900122272 /* ContactsOptionTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3577CD928BEA93900122272 /* ContactsOptionTableViewController.swift */; };
 		A3577CDC28BEADE200122272 /* AlertFriendsOrTeacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3577CDB28BEADE200122272 /* AlertFriendsOrTeacher.swift */; };
 		A35F9C9C28BD3BB8005E0D10 /* TasksTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9C9B28BD3BB8005E0D10 /* TasksTableViewCell.swift */; };
 		A35F9C9F28BD4094005E0D10 /* PressButtonProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9C9E28BD4094005E0D10 /* PressButtonProtocols.swift */; };
-		A35F9CA128BD4220005E0D10 /* OptionsScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CA028BD4220005E0D10 /* OptionsScheduleTableViewController.swift */; };
+		A35F9CA128BD4220005E0D10 /* ScheduleOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CA028BD4220005E0D10 /* ScheduleOptionsTableViewController.swift */; };
 		A35F9CA928BD4541005E0D10 /* OptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CA828BD4541005E0D10 /* OptionsTableViewCell.swift */; };
 		A35F9CAB28BE2911005E0D10 /* HeaderOptionsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CAA28BE2911005E0D10 /* HeaderOptionsTableViewCell.swift */; };
 		A35F9CAE28BE3365005E0D10 /* AlertDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CAD28BE3365005E0D10 /* AlertDate.swift */; };
 		A35F9CB028BE3E18005E0D10 /* AlertTime.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CAF28BE3E18005E0D10 /* AlertTime.swift */; };
 		A35F9CB228BE3FD9005E0D10 /* AlertForCellName.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB128BE3FD9005E0D10 /* AlertForCellName.swift */; };
-		A35F9CB428BE4216005E0D10 /* ScheduleColorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB328BE4216005E0D10 /* ScheduleColorViewController.swift */; };
+		A35F9CB428BE4216005E0D10 /* ScheduleColorsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB328BE4216005E0D10 /* ScheduleColorsViewController.swift */; };
 		A35F9CB628BE423A005E0D10 /* TeachersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB528BE423A005E0D10 /* TeachersViewController.swift */; };
-		A35F9CB828BE4EA1005E0D10 /* ColorTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB728BE4EA1005E0D10 /* ColorTableViewCell.swift */; };
-		A35F9CBA28BE502B005E0D10 /* TaskOptionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB928BE502B005E0D10 /* TaskOptionTableView.swift */; };
-		A35F9CBE28BE5466005E0D10 /* ColorTaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CBD28BE5466005E0D10 /* ColorTaskTableViewController.swift */; };
+		A35F9CB828BE4EA1005E0D10 /* ColorsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB728BE4EA1005E0D10 /* ColorsTableViewCell.swift */; };
+		A35F9CBA28BE502B005E0D10 /* TasksOptionTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CB928BE502B005E0D10 /* TasksOptionTableView.swift */; };
+		A35F9CBE28BE5466005E0D10 /* TaskColorsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A35F9CBD28BE5466005E0D10 /* TaskColorsTableViewController.swift */; };
 		A39FC3BA28BA9C2C0033740B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3B928BA9C2C0033740B /* AppDelegate.swift */; };
 		A39FC3BC28BA9C2C0033740B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3BB28BA9C2C0033740B /* SceneDelegate.swift */; };
 		A39FC3BE28BA9C2C0033740B /* MainTapBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3BD28BA9C2C0033740B /* MainTapBarController.swift */; };
@@ -36,32 +42,37 @@
 		A39FC3C628BA9C2E0033740B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39FC3C428BA9C2E0033740B /* LaunchScreen.storyboard */; };
 		A39FC3D128BA9F280033740B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3D028BA9F280033740B /* ScheduleViewController.swift */; };
 		A39FC3D328BA9F320033740B /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3D228BA9F320033740B /* TasksViewController.swift */; };
+		A3F0767B28BFCEB60052B471 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F0767A28BFCEB60052B471 /* UIColor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		5FCB1F035E2B4EA9D9F893AD /* Pods_MySchedule.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySchedule.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		63F547398155FF38545E79DF /* Pods-MySchedule.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySchedule.release.xcconfig"; path = "Target Support Files/Pods-MySchedule/Pods-MySchedule.release.xcconfig"; sourceTree = "<group>"; };
+		A306591628C000EC00542C75 /* AlertOk.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertOk.swift; sourceTree = "<group>"; };
+		A311950128BFB6FC00DCBCB7 /* AlertPhotoCamera.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertPhotoCamera.swift; sourceTree = "<group>"; };
+		A311950928BFC06500DCBCB7 /* ScheduleModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleModel.swift; sourceTree = "<group>"; };
 		A321F3E628BD08FA0089B1B4 /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewCell.swift; sourceTree = "<group>"; };
 		A321F3EA28BD0F890089B1B4 /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		A321F3EC28BD14560089B1B4 /* UILabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UILabel.swift; sourceTree = "<group>"; };
 		A321F3EE28BD16920089B1B4 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		A33C302E28BFC32E005E46C5 /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		A3577CD528BE966C00122272 /* ContactsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
 		A3577CD728BE97B400122272 /* ContactsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsTableViewCell.swift; sourceTree = "<group>"; };
-		A3577CD928BEA93900122272 /* ContactOptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactOptionTableViewController.swift; sourceTree = "<group>"; };
+		A3577CD928BEA93900122272 /* ContactsOptionTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactsOptionTableViewController.swift; sourceTree = "<group>"; };
 		A3577CDB28BEADE200122272 /* AlertFriendsOrTeacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertFriendsOrTeacher.swift; sourceTree = "<group>"; };
 		A35F9C9B28BD3BB8005E0D10 /* TasksTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksTableViewCell.swift; sourceTree = "<group>"; };
 		A35F9C9E28BD4094005E0D10 /* PressButtonProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PressButtonProtocols.swift; sourceTree = "<group>"; };
-		A35F9CA028BD4220005E0D10 /* OptionsScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScheduleTableViewController.swift; sourceTree = "<group>"; };
+		A35F9CA028BD4220005E0D10 /* ScheduleOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleOptionsTableViewController.swift; sourceTree = "<group>"; };
 		A35F9CA828BD4541005E0D10 /* OptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTableViewCell.swift; sourceTree = "<group>"; };
 		A35F9CAA28BE2911005E0D10 /* HeaderOptionsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderOptionsTableViewCell.swift; sourceTree = "<group>"; };
 		A35F9CAD28BE3365005E0D10 /* AlertDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertDate.swift; sourceTree = "<group>"; };
 		A35F9CAF28BE3E18005E0D10 /* AlertTime.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertTime.swift; sourceTree = "<group>"; };
 		A35F9CB128BE3FD9005E0D10 /* AlertForCellName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertForCellName.swift; sourceTree = "<group>"; };
-		A35F9CB328BE4216005E0D10 /* ScheduleColorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleColorViewController.swift; sourceTree = "<group>"; };
+		A35F9CB328BE4216005E0D10 /* ScheduleColorsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleColorsViewController.swift; sourceTree = "<group>"; };
 		A35F9CB528BE423A005E0D10 /* TeachersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TeachersViewController.swift; sourceTree = "<group>"; };
-		A35F9CB728BE4EA1005E0D10 /* ColorTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTableViewCell.swift; sourceTree = "<group>"; };
-		A35F9CB928BE502B005E0D10 /* TaskOptionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskOptionTableView.swift; sourceTree = "<group>"; };
-		A35F9CBD28BE5466005E0D10 /* ColorTaskTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorTaskTableViewController.swift; sourceTree = "<group>"; };
+		A35F9CB728BE4EA1005E0D10 /* ColorsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorsTableViewCell.swift; sourceTree = "<group>"; };
+		A35F9CB928BE502B005E0D10 /* TasksOptionTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksOptionTableView.swift; sourceTree = "<group>"; };
+		A35F9CBD28BE5466005E0D10 /* TaskColorsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskColorsTableViewController.swift; sourceTree = "<group>"; };
 		A39FC3B628BA9C2C0033740B /* MySchedule.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySchedule.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A39FC3B928BA9C2C0033740B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A39FC3BB28BA9C2C0033740B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -71,6 +82,7 @@
 		A39FC3C728BA9C2E0033740B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A39FC3D028BA9F280033740B /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		A39FC3D228BA9F320033740B /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		A3F0767A28BFCEB60052B471 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A44FA756D78EF2B19EF7F2C4 /* Pods-MySchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySchedule.debug.xcconfig"; path = "Target Support Files/Pods-MySchedule/Pods-MySchedule.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +91,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A311950728BFBEED00DCBCB7 /* RealmSwift in Frameworks */,
+				A311950528BFBEED00DCBCB7 /* Realm in Frameworks */,
 				57EBDE6E63F1F6D7D7D58EAA /* Pods_MySchedule.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -95,20 +109,29 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
-		A321F3E428BD08E00089B1B4 /* Model */ = {
+		A311950828BFC04000DCBCB7 /* Realm */ = {
 			isa = PBXGroup;
 			children = (
+				A311950928BFC06500DCBCB7 /* ScheduleModel.swift */,
+			);
+			path = Realm;
+			sourceTree = "<group>";
+		};
+		A321F3E428BD08E00089B1B4 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A311950828BFC04000DCBCB7 /* Realm */,
 				A35F9CAC28BE3357005E0D10 /* Alert */,
 				A321F3E528BD08EC0089B1B4 /* Cell */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		A321F3E528BD08EC0089B1B4 /* Cell */ = {
 			isa = PBXGroup;
 			children = (
 				A35F9CAA28BE2911005E0D10 /* HeaderOptionsTableViewCell.swift */,
-				A35F9CB728BE4EA1005E0D10 /* ColorTableViewCell.swift */,
+				A35F9CB728BE4EA1005E0D10 /* ColorsTableViewCell.swift */,
 				A35F9CA828BD4541005E0D10 /* OptionsTableViewCell.swift */,
 				A35F9CA528BD44F4005E0D10 /* Schedule */,
 				A35F9CA628BD44FB005E0D10 /* Tasks */,
@@ -131,8 +154,17 @@
 				A321F3EA28BD0F890089B1B4 /* UIStackView.swift */,
 				A321F3EC28BD14560089B1B4 /* UILabel.swift */,
 				A321F3EE28BD16920089B1B4 /* UIFont.swift */,
+				A3F0767A28BFCEB60052B471 /* UIColor.swift */,
 			);
 			path = UIKit;
+			sourceTree = "<group>";
+		};
+		A33C302D28BFC30A005E46C5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				A33C302E28BFC32E005E46C5 /* RealmManager.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		A35F9C9D28BD407E005E0D10 /* Protocols */ = {
@@ -147,8 +179,8 @@
 			isa = PBXGroup;
 			children = (
 				A39FC3D028BA9F280033740B /* ScheduleViewController.swift */,
-				A35F9CA028BD4220005E0D10 /* OptionsScheduleTableViewController.swift */,
-				A35F9CB328BE4216005E0D10 /* ScheduleColorViewController.swift */,
+				A35F9CA028BD4220005E0D10 /* ScheduleOptionsTableViewController.swift */,
+				A35F9CB328BE4216005E0D10 /* ScheduleColorsViewController.swift */,
 			);
 			path = Schedule;
 			sourceTree = "<group>";
@@ -157,8 +189,8 @@
 			isa = PBXGroup;
 			children = (
 				A39FC3D228BA9F320033740B /* TasksViewController.swift */,
-				A35F9CB928BE502B005E0D10 /* TaskOptionTableView.swift */,
-				A35F9CBD28BE5466005E0D10 /* ColorTaskTableViewController.swift */,
+				A35F9CB928BE502B005E0D10 /* TasksOptionTableView.swift */,
+				A35F9CBD28BE5466005E0D10 /* TaskColorsTableViewController.swift */,
 			);
 			path = Tasks;
 			sourceTree = "<group>";
@@ -166,9 +198,9 @@
 		A35F9CA428BD4269005E0D10 /* Contacts */ = {
 			isa = PBXGroup;
 			children = (
-				A35F9CB528BE423A005E0D10 /* TeachersViewController.swift */,
 				A3577CD528BE966C00122272 /* ContactsTableViewController.swift */,
-				A3577CD928BEA93900122272 /* ContactOptionTableViewController.swift */,
+				A3577CD928BEA93900122272 /* ContactsOptionTableViewController.swift */,
+				A35F9CB528BE423A005E0D10 /* TeachersViewController.swift */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -204,6 +236,8 @@
 				A35F9CAF28BE3E18005E0D10 /* AlertTime.swift */,
 				A35F9CB128BE3FD9005E0D10 /* AlertForCellName.swift */,
 				A3577CDB28BEADE200122272 /* AlertFriendsOrTeacher.swift */,
+				A311950128BFB6FC00DCBCB7 /* AlertPhotoCamera.swift */,
+				A306591628C000EC00542C75 /* AlertOk.swift */,
 			);
 			path = Alert;
 			sourceTree = "<group>";
@@ -231,7 +265,8 @@
 			children = (
 				A39FC3CD28BA9CD70033740B /* Application */,
 				A39FC3CE28BA9CE40033740B /* Controllers */,
-				A321F3E428BD08E00089B1B4 /* Model */,
+				A321F3E428BD08E00089B1B4 /* Models */,
+				A33C302D28BFC30A005E46C5 /* Services */,
 				A321F3E828BD0F670089B1B4 /* Extensions */,
 				A39FC3CF28BA9CEB0033740B /* Resources */,
 				A35F9C9D28BD407E005E0D10 /* Protocols */,
@@ -295,6 +330,10 @@
 			dependencies = (
 			);
 			name = MySchedule;
+			packageProductDependencies = (
+				A311950428BFBEED00DCBCB7 /* Realm */,
+				A311950628BFBEED00DCBCB7 /* RealmSwift */,
+			);
 			productName = MySchedule;
 			productReference = A39FC3B628BA9C2C0033740B /* MySchedule.app */;
 			productType = "com.apple.product-type.application";
@@ -323,6 +362,9 @@
 				Base,
 			);
 			mainGroup = A39FC3AD28BA9C2C0033740B;
+			packageReferences = (
+				A311950328BFBEED00DCBCB7 /* XCRemoteSwiftPackageReference "realm-swift" */,
+			);
 			productRefGroup = A39FC3B728BA9C2C0033740B /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -393,30 +435,35 @@
 			files = (
 				A35F9CAE28BE3365005E0D10 /* AlertDate.swift in Sources */,
 				A39FC3BE28BA9C2C0033740B /* MainTapBarController.swift in Sources */,
-				A35F9CB828BE4EA1005E0D10 /* ColorTableViewCell.swift in Sources */,
-				A35F9CBA28BE502B005E0D10 /* TaskOptionTableView.swift in Sources */,
+				A35F9CB828BE4EA1005E0D10 /* ColorsTableViewCell.swift in Sources */,
+				A35F9CBA28BE502B005E0D10 /* TasksOptionTableView.swift in Sources */,
 				A3577CDC28BEADE200122272 /* AlertFriendsOrTeacher.swift in Sources */,
 				A321F3E728BD08FA0089B1B4 /* ScheduleTableViewCell.swift in Sources */,
+				A306591728C000EC00542C75 /* AlertOk.swift in Sources */,
 				A39FC3BA28BA9C2C0033740B /* AppDelegate.swift in Sources */,
 				A321F3EB28BD0F890089B1B4 /* UIStackView.swift in Sources */,
+				A311950A28BFC06500DCBCB7 /* ScheduleModel.swift in Sources */,
 				A35F9CB628BE423A005E0D10 /* TeachersViewController.swift in Sources */,
 				A3577CD828BE97B400122272 /* ContactsTableViewCell.swift in Sources */,
 				A35F9CB228BE3FD9005E0D10 /* AlertForCellName.swift in Sources */,
 				A35F9CAB28BE2911005E0D10 /* HeaderOptionsTableViewCell.swift in Sources */,
 				A321F3ED28BD14560089B1B4 /* UILabel.swift in Sources */,
+				A33C302F28BFC32E005E46C5 /* RealmManager.swift in Sources */,
 				A39FC3D328BA9F320033740B /* TasksViewController.swift in Sources */,
 				A35F9CB028BE3E18005E0D10 /* AlertTime.swift in Sources */,
 				A39FC3BC28BA9C2C0033740B /* SceneDelegate.swift in Sources */,
 				A3577CD628BE966C00122272 /* ContactsTableViewController.swift in Sources */,
-				A35F9CBE28BE5466005E0D10 /* ColorTaskTableViewController.swift in Sources */,
+				A3F0767B28BFCEB60052B471 /* UIColor.swift in Sources */,
+				A35F9CBE28BE5466005E0D10 /* TaskColorsTableViewController.swift in Sources */,
 				A39FC3D128BA9F280033740B /* ScheduleViewController.swift in Sources */,
-				A3577CDA28BEA93900122272 /* ContactOptionTableViewController.swift in Sources */,
+				A3577CDA28BEA93900122272 /* ContactsOptionTableViewController.swift in Sources */,
 				A321F3EF28BD16920089B1B4 /* UIFont.swift in Sources */,
 				A35F9C9C28BD3BB8005E0D10 /* TasksTableViewCell.swift in Sources */,
+				A311950228BFB6FC00DCBCB7 /* AlertPhotoCamera.swift in Sources */,
 				A35F9CA928BD4541005E0D10 /* OptionsTableViewCell.swift in Sources */,
 				A35F9C9F28BD4094005E0D10 /* PressButtonProtocols.swift in Sources */,
-				A35F9CB428BE4216005E0D10 /* ScheduleColorViewController.swift in Sources */,
-				A35F9CA128BD4220005E0D10 /* OptionsScheduleTableViewController.swift in Sources */,
+				A35F9CB428BE4216005E0D10 /* ScheduleColorsViewController.swift in Sources */,
+				A35F9CA128BD4220005E0D10 /* ScheduleOptionsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -626,6 +673,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A311950328BFBEED00DCBCB7 /* XCRemoteSwiftPackageReference "realm-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-swift.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.28.6;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A311950428BFBEED00DCBCB7 /* Realm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A311950328BFBEED00DCBCB7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = Realm;
+		};
+		A311950628BFBEED00DCBCB7 /* RealmSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A311950328BFBEED00DCBCB7 /* XCRemoteSwiftPackageReference "realm-swift" */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A39FC3AE28BA9C2C0033740B /* Project object */;
 }
