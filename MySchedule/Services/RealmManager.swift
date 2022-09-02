@@ -26,4 +26,16 @@ class RealmManager {
             localRealm.delete(model)
         }
     }
+    
+    func saveTasksModel(model: TasksModel) {
+        try! localRealm.write {
+            localRealm.add(model)
+        }
+    }
+    
+    func deleteTasksModel(model: TasksModel) {
+        try! localRealm.write {
+            localRealm.delete(model)
+        }
+    }
 }

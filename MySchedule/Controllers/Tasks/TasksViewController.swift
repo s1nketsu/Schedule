@@ -7,6 +7,7 @@
 
 import UIKit
 import FSCalendar
+import RealmSwift
 
 class TasksViewController: UIViewController {
     
@@ -36,6 +37,16 @@ class TasksViewController: UIViewController {
     
     private let idTasksCell = "idTasksCell"
     
+    private var tasksModel = TasksModel()
+    
+    let localRealm = try! Realm()
+    var tasksArray: Results<TasksModel>!
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -52,6 +63,7 @@ class TasksViewController: UIViewController {
         
         setConstraints()
         swipeAction()
+        tasksOnDay(date: Date())
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
@@ -72,6 +84,12 @@ class TasksViewController: UIViewController {
         }
     }
     
+    private func tasksOnDay(date: Date) {
+        
+        tasksArray = localRealm.objects(TasksModel.self).sorted(byKeyPath: "taskLessonName")
+        tableView.reloadData()
+    }
+    
     private func swipeAction() {
         let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
         swipeUp.direction = .up
@@ -90,17 +108,30 @@ class TasksViewController: UIViewController {
         default: break
         }
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let editingRow = tasksArray[indexPath.row]
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { _ ,_ , completionHandler in
+            RealmManager.shared.deleteTasksModel(model: editingRow)
+            tableView.reloadData()
+        }
+        return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
 }
 
 extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3
+        return tasksArray.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idTasksCell, for: indexPath) as! TasksTableViewCell
         cell.cellTaskDelegate = self
+        let model = tasksArray[indexPath.row]
+        cell.configure(model: model)
         cell.index = indexPath
         return cell
     }
@@ -114,7 +145,14 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TasksViewController: PressButtonTaskButtonProtocol {
     func readyButtonTapped(indexPath: IndexPath) {
-        print("Tap")
+        if tasksModel.taskIsFinished == false {
+            tasksModel.taskIsFinished = true
+            TasksTableViewCell.readyButton.tintColor = .green
+        } else {
+            tasksModel.taskIsFinished = false
+            TasksTableViewCell.readyButton.tintColor = .black
+        }
+        
     }
 }
 

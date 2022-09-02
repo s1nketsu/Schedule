@@ -58,6 +58,24 @@ class TaskColorsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        print("TapCell")
+       
+        switch indexPath.section {
+        case 0: setColor(color: "BE2813")
+        case 1: setColor(color: "EF5931")
+        case 2: setColor(color: "F3AF22")
+        case 3: setColor(color: "579F2B")
+        case 4: setColor(color: "3DACF7")
+        case 5: setColor(color: "5D11F7")
+        case 6: setColor(color: "8E5AF7")
+        default:
+            setColor(color: "FFFFFF")
+        }
+    }
+    
+    private func setColor(color: String) {
+        let tasksOptions = self.navigationController?.viewControllers[1] as? TasksOptionTableView
+        tasksOptions?.hexColorCell = color
+        tasksOptions?.tableView.reloadRows(at: [[3,0]], with: .none)
+        self.navigationController?.popViewController(animated: true)
     }
 }
