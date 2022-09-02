@@ -85,8 +85,21 @@ class TasksViewController: UIViewController {
     }
     
     private func tasksOnDay(date: Date) {
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.weekday], from: date)
+        guard let weekday = components.weekday else { return }
+
+        let dateStart = date
+        let dateEnd: Date = {
+            let components = DateComponents(day: 1, second: -1)
+            return Calendar.current.date(byAdding: components, to: dateStart)!
+        }()
         
-        tasksArray = localRealm.objects(TasksModel.self).sorted(byKeyPath: "taskLessonName")
+        let predicateRepeat = NSPredicate(format: "taskWeekday = \(weekday)")
+        let predicateUnrepeat = NSPredicate(format: "taskIsFinished = false AND taskDate BETWEEN %@", [dateStart, dateEnd])
+        let compound = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
+        
+        tasksArray = localRealm.objects(TasksModel.self).filter(compound).sorted(byKeyPath: "taskDate")
         tableView.reloadData()
     }
     
@@ -129,10 +142,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idTasksCell, for: indexPath) as! TasksTableViewCell
-        cell.cellTaskDelegate = self
         let model = tasksArray[indexPath.row]
         cell.configure(model: model)
-        cell.index = indexPath
         return cell
     }
     
@@ -166,7 +177,7 @@ extension TasksViewController: FSCalendarDataSource, FSCalendarDelegate {
     }
     
     func calendar(_ calendar: FSCalendar, didSelect date: Date, at monthPosition: FSCalendarMonthPosition) {
-        print(date)
+        tasksOnDay(date: date)
     }
 }
 

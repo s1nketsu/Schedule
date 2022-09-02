@@ -45,10 +45,7 @@ class TasksTableViewCell: UITableViewCell {
     }
     
     func configure(model: TasksModel) {
-        
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        
+
         taskName.text = model.taskLessonName
         taskDescription.text = model.task
         backgroundColor = UIColor().colorFromHex("\(model.taskColor)")
