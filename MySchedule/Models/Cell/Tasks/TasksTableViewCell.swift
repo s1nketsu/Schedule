@@ -12,7 +12,7 @@ class TasksTableViewCell: UITableViewCell {
     let taskName = UILabel(text: "Программирование", font: .avenirNextDemiBold20(), alignment: .left)
     let taskDescription = UILabel(text: "Научиться писать extension и правильно их применять", font: .avenirNext14(), alignment: .left)
     
-    static var readyButton: UIButton = {
+    var readyButton: UIButton = {
         let button = UIButton()
         button.setBackgroundImage(UIImage(systemName: "chevron.down.circle"), for: .normal)
         button.tintColor = .black
@@ -30,7 +30,7 @@ class TasksTableViewCell: UITableViewCell {
         
         setConstraints()
         
-        TasksTableViewCell.readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
+        readyButton.addTarget(self, action: #selector(readyButtonTapped), for: .touchUpInside)
 
         taskDescription.numberOfLines = 2
     }
@@ -49,21 +49,27 @@ class TasksTableViewCell: UITableViewCell {
         taskName.text = model.taskLessonName
         taskDescription.text = model.task
         backgroundColor = UIColor().colorFromHex("\(model.taskColor)")
+        
+        if model.taskIsFinished {
+            readyButton.setBackgroundImage(UIImage(systemName: "chevron.down.circle.fill"), for: .normal)
+        } else {
+            readyButton.setBackgroundImage(UIImage(systemName: "chevron.down.circle"), for: .normal)
+        }
     }
     
     func setConstraints() {
-        self.contentView.addSubview(TasksTableViewCell.readyButton)
+        self.contentView.addSubview(readyButton)
         NSLayoutConstraint.activate([
-            TasksTableViewCell.readyButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
-            TasksTableViewCell.readyButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            TasksTableViewCell.readyButton.heightAnchor.constraint(equalToConstant: 40),
-            TasksTableViewCell.readyButton.widthAnchor.constraint(equalToConstant: 40),
+            readyButton.centerYAnchor.constraint(equalTo: self.centerYAnchor),
+            readyButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            readyButton.heightAnchor.constraint(equalToConstant: 40),
+            readyButton.widthAnchor.constraint(equalToConstant: 40),
         ])
         
         self.addSubview(taskName)
         NSLayoutConstraint.activate([
             taskName.topAnchor.constraint(equalTo: self.topAnchor, constant: 10),
-            taskName.trailingAnchor.constraint(equalTo: TasksTableViewCell.readyButton.leadingAnchor, constant: -5),
+            taskName.trailingAnchor.constraint(equalTo: readyButton.leadingAnchor, constant: -5),
             taskName.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             taskName.heightAnchor.constraint(equalToConstant: 25)
         ])
@@ -71,7 +77,7 @@ class TasksTableViewCell: UITableViewCell {
         self.addSubview(taskDescription)
         NSLayoutConstraint.activate([
             taskDescription.topAnchor.constraint(equalTo: taskName.bottomAnchor, constant: 5),
-            taskDescription.trailingAnchor.constraint(equalTo: TasksTableViewCell.readyButton.leadingAnchor, constant: -5),
+            taskDescription.trailingAnchor.constraint(equalTo: readyButton.leadingAnchor, constant: -5),
             taskDescription.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 5),
             taskDescription.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -5)
         ])

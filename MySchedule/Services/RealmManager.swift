@@ -38,4 +38,22 @@ class RealmManager {
             localRealm.delete(model)
         }
     }
+    
+    func updateReadyButtonTaskModel(task: TasksModel, bool: Bool) {
+        try! localRealm.write {
+            task.taskIsFinished = bool
+        }
+    }
+    
+    func saveContactModel(model: ContactModel) {
+        try! localRealm.write {
+            localRealm.add(model)
+        }
+    }
+    
+    func deleteContactModel(model: ContactModel) {
+        try! localRealm.write {
+            localRealm.delete(model)
+        }
+    }
 }

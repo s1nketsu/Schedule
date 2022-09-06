@@ -83,9 +83,8 @@ class TasksOptionTableView: UITableViewController {
         let cell = tableView.cellForRow(at: indexPath) as! OptionsTableViewCell
         
         switch indexPath.section {
-        case 0: alertDate(label: cell.nameCellLabel) { (numberWeekday, date) in
+        case 0: alertDate(label: cell.nameCellLabel) { (_, date) in
             self.tasksModel.taskDate = date
-            self.tasksModel.taskWeekday = numberWeekday
         }
         case 1: alertForCellName(label: cell.nameCellLabel, name: "Name Lesson", placeholder: "Enter lesson name") { text in
             self.tasksModel.taskLessonName = text

@@ -39,8 +39,8 @@ class TasksViewController: UIViewController {
     
     private var tasksModel = TasksModel()
     
-    let localRealm = try! Realm()
-    var tasksArray: Results<TasksModel>!
+    private let localRealm = try! Realm()
+    private var tasksArray: Results<TasksModel>!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -63,7 +63,7 @@ class TasksViewController: UIViewController {
         
         setConstraints()
         swipeAction()
-        tasksOnDay(date: Date())
+        tasksOnDay(date: calendar.today!)
         showHideButton.addTarget(self, action: #selector(showHideButtonTapped), for: .touchUpInside)
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addButtonTapped))
@@ -85,9 +85,6 @@ class TasksViewController: UIViewController {
     }
     
     private func tasksOnDay(date: Date) {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.weekday], from: date)
-        guard let weekday = components.weekday else { return }
 
         let dateStart = date
         let dateEnd: Date = {
@@ -95,11 +92,7 @@ class TasksViewController: UIViewController {
             return Calendar.current.date(byAdding: components, to: dateStart)!
         }()
         
-        let predicateRepeat = NSPredicate(format: "taskWeekday = \(weekday)")
-        let predicateUnrepeat = NSPredicate(format: "taskIsFinished = false AND taskDate BETWEEN %@", [dateStart, dateEnd])
-        let compound = NSCompoundPredicate(type: .or, subpredicates: [predicateRepeat, predicateUnrepeat])
-        
-        tasksArray = localRealm.objects(TasksModel.self).filter(compound).sorted(byKeyPath: "taskDate")
+        tasksArray = localRealm.objects(TasksModel.self).filter("taskDate BETWEEN %@", [dateStart, dateEnd])
         tableView.reloadData()
     }
     
@@ -142,6 +135,8 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: idTasksCell, for: indexPath) as! TasksTableViewCell
+        cell.cellTaskDelegate = self
+        cell.index = indexPath
         let model = tasksArray[indexPath.row]
         cell.configure(model: model)
         return cell
@@ -156,14 +151,9 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
 
 extension TasksViewController: PressButtonTaskButtonProtocol {
     func readyButtonTapped(indexPath: IndexPath) {
-        if tasksModel.taskIsFinished == false {
-            tasksModel.taskIsFinished = true
-            TasksTableViewCell.readyButton.tintColor = .green
-        } else {
-            tasksModel.taskIsFinished = false
-            TasksTableViewCell.readyButton.tintColor = .black
-        }
-        
+        let task = tasksArray[indexPath.row]
+        RealmManager.shared.updateReadyButtonTaskModel(task: task, bool: !task.taskIsFinished)
+        tableView.reloadData()
     }
 }
 

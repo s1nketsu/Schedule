@@ -5,8 +5,8 @@
 //  Created by Полищук Александр on 02.09.2022.
 //
 
+import UIKit
 import RealmSwift
-import Foundation
 
 class TasksModel: Object {
     
@@ -15,5 +15,4 @@ class TasksModel: Object {
     @Persisted var task: String = "No task added"
     @Persisted var taskColor: String = "5D11F7"
     @Persisted var taskIsFinished: Bool = false
-    @Persisted var taskWeekday: Int = 1
 }

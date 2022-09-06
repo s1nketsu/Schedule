@@ -68,8 +68,7 @@ class OptionsTableViewCell: UITableViewCell {
     
     func cellContactConfigure(nameArray: [String], indexPath: IndexPath) {
         nameCellLabel.text = nameArray[indexPath.section]
-        
-        indexPath.section == 4 ? backgroundViewCell.image = UIImage(systemName: "person.fill.badge.plus") : nil
+        backgroundViewCell.image = (indexPath.section == 4 ? UIImage(systemName: "person.fill.badge.plus") : nil)
     }
     
     @objc func switchChange(paramTarget: UISwitch) {
