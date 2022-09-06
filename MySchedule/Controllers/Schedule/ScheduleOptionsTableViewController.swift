@@ -14,13 +14,13 @@ class ScheduleOptionsTableViewController: UITableViewController {
     
     let headerNameArray = ["DATE AND TIME","SUBJECT","TEACHER","COLOR","PERIOD"]
     
-    let cellNameArray = [["Date","Time"],
+    var cellNameArray = [["Date","Time"],
                          ["Name","Type", "Building", "Audience"],
                          ["Teacher Name"],
                          [""],
                          ["Repeat every 7 days"]]
     
-    private var scheduleModel = ScheduleModel()
+    var scheduleModel = ScheduleModel()
     
     var hexColorCell = "5D11F7"
     
@@ -52,6 +52,7 @@ class ScheduleOptionsTableViewController: UITableViewController {
             scheduleModel = ScheduleModel()
             alertOk(title: "Lesson added", message: nil)
             hexColorCell = "5D11F7"
+            cellNameArray[2][0] = "Teacher name"
             tableView.reloadData()
         }
     }
@@ -119,7 +120,7 @@ class ScheduleOptionsTableViewController: UITableViewController {
             alertForCellName(label: cell.nameCellLabel, name: "Audience", placeholder: "Enter audience") { text in
                 self.scheduleModel.scheduleAudience = text
         }
-        case [2,0]: pushControllers(vc: TeachersViewController())
+        case [2,0]: pushControllers(vc: TeachersTableViewController())
         case [3,0]: pushControllers(vc: ScheduleColorsViewController())
 
         default: print("Tap OptionTableView")

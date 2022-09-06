@@ -6,6 +6,7 @@
 //
 
 import RealmSwift
+import SwiftUI
 
 
 class RealmManager {
@@ -54,6 +55,17 @@ class RealmManager {
     func deleteContactModel(model: ContactModel) {
         try! localRealm.write {
             localRealm.delete(model)
+        }
+    }
+   
+    func updateContactModel(model: ContactModel, nameArray: [String], imageData: Data?) {
+        try! localRealm.write {
+            model.contactsName = nameArray[0]
+            model.contactsPhone = nameArray[1]
+            model.contactsMail = nameArray[2]
+            model.contactsType = nameArray[3]
+            model.contactsImage = imageData
+            localRealm.add(model)
         }
     }
 }

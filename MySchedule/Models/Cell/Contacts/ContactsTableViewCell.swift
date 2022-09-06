@@ -61,9 +61,13 @@ class ContactsTableViewCell: UITableViewCell {
         nameLabel.text = model.contactsName
         phoneLabel.text = model.contactsPhone
         mailLabel.text = model.contactsMail
- 
-        guard let data = model.contactsImage, let image = UIImage(data: data) else { return }
-        contactImageView.image = image
+        
+        if let data = model.contactsImage, let image = UIImage(data: data) {
+            contactImageView.image = image
+        } else {
+            contactImageView.image = UIImage(systemName: "person.fill")
+        }
+        
     }
     
     func setConstraints() {
@@ -83,7 +87,7 @@ class ContactsTableViewCell: UITableViewCell {
             nameLabel.heightAnchor.constraint(equalToConstant: 21),
         ])
         
-        let stackView = UIStackView(arrangedSubviews: [phoneImageView, phoneLabel, mailImageView, mailLabel], axis: .horizontal, spacing: 3, distribution: .fillProportionally)
+        let stackView = UIStackView(arrangedSubviews: [phoneImageView, phoneLabel, mailImageView, mailLabel], axis: .horizontal, spacing: 3, distribution: .equalSpacing)
        
         self.addSubview(stackView)
         NSLayoutConstraint.activate([
