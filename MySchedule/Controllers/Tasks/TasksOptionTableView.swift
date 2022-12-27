@@ -12,13 +12,13 @@ class TasksOptionTableView: UITableViewController {
     private let idOptionsTaskCell = "idOptionsTaskCell"
     private let idOptionsTasksCellHeader = "idOptionsTasksCellHeader"
     
-    private var tasksModel = TasksModel()
-    
+    var tasksModel = TasksModel()
+    var editModel = false
     var hexColorCell = "5D11F7"
-    
+    var date: Date?
     let headerNameArray = ["DATE","SUBJECT","TASK","COLOR"]
     
-    let cellNameArray = ["Date","Lesson","Task",""]
+    var cellNameArray = ["Date","Lesson","Task",""]
     
     
     override func viewDidLoad() {
@@ -38,17 +38,31 @@ class TasksOptionTableView: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveButtonTapped))
     }
     
+    private func setModel() {
+        tasksModel.taskDate = date
+        tasksModel.taskLessonName = cellNameArray[1]
+        tasksModel.task = cellNameArray[2]
+        tasksModel.taskColor = ""
+        tasksModel.taskIsFinished = false
+    }
+    
     @objc private func saveButtonTapped() {
         
         if tasksModel.taskDate == nil || tasksModel.taskLessonName == "Unknown" || tasksModel.task == "Unknown" {
             alertOk(title: "Error", message: "Required fields: DATE, TIME, NAME")
-        } else {
+        } else if editModel == false {
+            setModel()
             tasksModel.taskColor = hexColorCell
             RealmManager.shared.saveTasksModel(model: tasksModel)
             tasksModel = TasksModel()
             alertOk(title: "Task added", message: nil)
             hexColorCell = "5D11F7"
             tableView.reloadData()
+        } else {
+            setModel()
+            tasksModel = TasksModel()
+            RealmManager.shared.updateTasksModel(model: tasksModel, nameArray: cellNameArray, date: date)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     
@@ -84,13 +98,17 @@ class TasksOptionTableView: UITableViewController {
         
         switch indexPath.section {
         case 0: alertDate(label: cell.nameCellLabel) { (_, date) in
-            self.tasksModel.taskDate = date
+//            self.tasksModel.taskDate = date
+            let dateFormatter = DateFormatter()
+            self.cellNameArray[0] = dateFormatter.string(from: date)
         }
         case 1: alertForCellName(label: cell.nameCellLabel, name: "Name Lesson", placeholder: "Enter lesson name") { text in
-            self.tasksModel.taskLessonName = text
+//            self.tasksModel.taskLessonName = text
+            self.cellNameArray[1] = text
         }
         case 2: alertForCellName(label: cell.nameCellLabel, name: "Name Task", placeholder: "Enter task name") { text in
-            self.tasksModel.task = text
+//            self.tasksModel.task = text
+            self.cellNameArray[2] = text
         }
         case 3: pushControllers(vc: TaskColorsTableViewController())
         default: print("Tap OptionTableView")

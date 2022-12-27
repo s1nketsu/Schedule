@@ -84,6 +84,19 @@ class TasksViewController: UIViewController {
         }
     }
     
+    @objc private func editingModel(tasksModel: TasksModel) {
+        let taskOption = TasksOptionTableView()
+        taskOption.tasksModel = tasksModel
+        taskOption.editModel = true
+        taskOption.cellNameArray = [
+            "",
+            tasksModel.taskLessonName,
+            tasksModel.task,
+            ""
+        ]
+        navigationController?.pushViewController(taskOption, animated: true)
+    }
+    
     private func tasksOnDay(date: Date) {
 
         let dateStart = date
@@ -140,6 +153,11 @@ extension TasksViewController: UITableViewDelegate, UITableViewDataSource {
         let model = tasksArray[indexPath.row]
         cell.configure(model: model)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let model = tasksArray[indexPath.row]
+        editingModel(tasksModel: model)
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

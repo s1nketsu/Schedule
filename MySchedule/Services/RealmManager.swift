@@ -68,4 +68,15 @@ class RealmManager {
             localRealm.add(model)
         }
     }
+    
+    func updateTasksModel(model: TasksModel, nameArray: [String], date: Date?) {
+        try! localRealm.write {
+            model.taskDate = date
+            model.taskLessonName = nameArray[1]
+            model.task = nameArray[2]
+            model.taskColor = nameArray[3]
+            model.taskIsFinished = false
+            localRealm.add(model)
+        }
+    }
 }

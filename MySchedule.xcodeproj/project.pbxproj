@@ -43,6 +43,7 @@
 		A39FC3C628BA9C2E0033740B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A39FC3C428BA9C2E0033740B /* LaunchScreen.storyboard */; };
 		A39FC3D128BA9F280033740B /* ScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3D028BA9F280033740B /* ScheduleViewController.swift */; };
 		A39FC3D328BA9F320033740B /* TasksViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A39FC3D228BA9F320033740B /* TasksViewController.swift */; };
+		A3D93CE9294FE10800129447 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A3D93CE8294FE10800129447 /* Storyboard.storyboard */; };
 		A3EF989528C67362004E8877 /* ContactModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3EF989428C67362004E8877 /* ContactModel.swift */; };
 		A3F0767B28BFCEB60052B471 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = A3F0767A28BFCEB60052B471 /* UIColor.swift */; };
 /* End PBXBuildFile section */
@@ -85,6 +86,7 @@
 		A39FC3C728BA9C2E0033740B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A39FC3D028BA9F280033740B /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		A39FC3D228BA9F320033740B /* TasksViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksViewController.swift; sourceTree = "<group>"; };
+		A3D93CE8294FE10800129447 /* Storyboard.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		A3EF989428C67362004E8877 /* ContactModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactModel.swift; sourceTree = "<group>"; };
 		A3F0767A28BFCEB60052B471 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		A44FA756D78EF2B19EF7F2C4 /* Pods-MySchedule.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySchedule.debug.xcconfig"; path = "Target Support Files/Pods-MySchedule/Pods-MySchedule.debug.xcconfig"; sourceTree = "<group>"; };
@@ -276,6 +278,7 @@
 				A321F3E828BD0F670089B1B4 /* Extensions */,
 				A39FC3CF28BA9CEB0033740B /* Resources */,
 				A35F9C9D28BD407E005E0D10 /* Protocols */,
+				A3D93CE8294FE10800129447 /* Storyboard.storyboard */,
 			);
 			path = MySchedule;
 			sourceTree = "<group>";
@@ -387,6 +390,7 @@
 			files = (
 				A39FC3C628BA9C2E0033740B /* LaunchScreen.storyboard in Resources */,
 				A39FC3C328BA9C2E0033740B /* Assets.xcassets in Resources */,
+				A3D93CE9294FE10800129447 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
